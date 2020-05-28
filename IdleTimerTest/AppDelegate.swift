@@ -11,8 +11,6 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
-    
     static var shared: AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
@@ -24,6 +22,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         launchDate = Date()
         return true
     }
+    
+    @available(iOS 13.0, *)
+    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        let configuration = UISceneConfiguration(name: "Main", sessionRole: .windowApplication)
+        configuration.sceneClass = UIWindowScene.self
+        configuration.delegateClass = SceneDelegate.self
+        configuration.storyboard = UIStoryboard(name: "Main", bundle: nil)
+        return configuration
+    }
 
+}
+
+class SceneDelegate: NSObject, UIWindowSceneDelegate {
+    var window: UIWindow?
 }
 
