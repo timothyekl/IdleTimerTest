@@ -36,5 +36,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 class SceneDelegate: NSObject, UIWindowSceneDelegate {
     var window: UIWindow?
+    
+    @available(iOS 13.0, *)
+    func sceneDidBecomeActive(_ scene: UIScene) {
+        UIApplication.shared.isIdleTimerDisabled = true
+    }
 }
 
